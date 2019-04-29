@@ -194,6 +194,13 @@ if OAUTH2_PROVIDER == 'azuread-oauth2':
     SOCIAL_AUTH_AZUREAD_OAUTH2_KEY = env.str('OAUTH2_APPLICATION_ID', default='')
     SOCIAL_AUTH_AZUREAD_OAUTH2_SECRET = env.str('OAUTH2_SECRET_KEY', default='')
     SOCIAL_AUTH_PROTECTED_USER_FIELDS = ['username']
+elif OAUTH2_PROVIDER == 'gitlab':
+    AUTHENTICATION_BACKENDS.append('social_core.backends.gitlab.GitLabOAuth2')
+    
+    SOCIAL_AUTH_GITLAB_KEY = env.str('OAUTH2_APPLICATION_ID', default='')
+    SOCIAL_AUTH_GITLAB_SECRET = env.str('OAUTH2_SECRET_KEY', default='')
+    SOCIAL_AUTH_GITLAB_API_URL = env.str('GITLAB_API_URL', default='')
+    SOCIAL_AUTH_PROTECTED_USER_FIELDS = ['username']
 
 
 # Load the user settings
